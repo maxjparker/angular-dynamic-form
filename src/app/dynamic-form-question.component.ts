@@ -37,8 +37,20 @@ import {QuestionBase} from './question-base';
         </fieldset>
       </div>
 
-    </div>
+      <div *ngSwitchCase="'checkbox'">
+        <fieldset
+          *ngFor="let opt of question.options"
+          [formArrayName]="question.key">
+          <input
+            [id]="opt.key"
+            type="checkbox"
+            [formControlName]="opt.key"
+            [value]="opt.key">
+          <label>{{opt.value}}</label><br>
+        </fieldset>
+      </div>
 
+    </div>
     <div class="errorMessage" *ngIf="!isValid">{{question.label}} is required.</div>
   </div>
   `

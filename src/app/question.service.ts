@@ -5,6 +5,7 @@ import {QuestionBase} from './question-base';
 import {TextboxQuestion} from './question-textbox';
 import {of} from 'rxjs';
 import {RadioQuestion} from './question-radio';
+import {CheckboxQuestion} from './question-checkbox';
 
 @Injectable()
 export class QuestionService {
@@ -49,7 +50,18 @@ export class QuestionService {
           {key: 'ans2', value: 'medium'},
           {key: 'ans3', value: 'worst'}
         ],
-        order: 4,
+        order: 4
+      }),
+
+      new CheckboxQuestion({
+        key: 'checkboxQuestion1',
+        label: 'This is the first checkbox question!',
+        options: [
+          {key: 'cans1', value: 'First Check'},
+          {key: 'cans2', value: 'Second Check'},
+          {key: 'cans3', value: 'Third Check'}
+        ],
+        order: 5
       })
     ];
 

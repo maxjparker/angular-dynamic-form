@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 
 import { QuestionBase } from './question-base';
 
@@ -11,11 +11,26 @@ export class QuestionControlService {
     let group: any = {};
 
     questions.forEach(question => {
-      group[question.key] = question.required ?
-        new FormControl(question.value || '', Validators.required) :
-        new FormControl(question.value || '');
+      if (question.controlType === 'checkbox') {
+        group[question.key] = this.toFormArray(question);
+      } else {
+        group[question.key] = question.required ?
+          new FormControl(question.value || '', Validators.required) :
+          new FormControl(question.value || '');
+      }
+
     });
     return new FormGroup(group);
+  }
+
+  toFormArray(question: QuestionBase<string>) {
+    let array:[] = [];
+
+    question.options.forEach(opt => {
+      array[opt.key] = new FormControl(opt.value || '');
+    });
+
+    return new FormArray(array);
   }
 
 }
