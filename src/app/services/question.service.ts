@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 
-import {DropdownQuestion} from './question-dropdown';
-import {QuestionBase} from './question-base';
-import {TextboxQuestion} from './question-textbox';
+import {DropdownQuestion} from '../models/question-dropdown';
+import {QuestionBase} from '../models/question-base';
+import {TextboxQuestion} from '../models/question-textbox';
 import {of} from 'rxjs';
-import {RadioQuestion} from './question-radio';
-import {CheckboxQuestion} from './question-checkbox';
+import {RadioQuestion} from '../models/question-radio';
+import {CheckboxQuestion} from '../models/question-checkbox';
 
 @Injectable()
 export class QuestionService {
