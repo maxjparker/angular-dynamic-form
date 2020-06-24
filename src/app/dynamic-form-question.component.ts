@@ -19,7 +19,7 @@ import {QuestionBase} from './question-base';
 
       <select
         [id]="question.key"
-        [type]="question.type"
+        *ngSwitchCase="'dropdown'"
         [formControlName]="question.key">
         <option
           *ngFor="let opt of question.options"
