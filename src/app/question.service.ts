@@ -4,6 +4,7 @@ import {DropdownQuestion} from './question-dropdown';
 import {QuestionBase} from './question-base';
 import {TextboxQuestion} from './question-textbox';
 import {of} from 'rxjs';
+import {RadioQuestion} from './question-radio';
 
 @Injectable()
 export class QuestionService {
@@ -37,10 +38,22 @@ export class QuestionService {
         label: 'Email',
         type: 'email',
         order: 2
+      }),
+
+      new RadioQuestion({
+        key: 'radioQuestion1',
+        label: 'This is the first radio question',
+        required: true,
+        options: [
+          {key: 'ans1', value: 'Best'},
+          {key: 'ans2', value: 'medium'},
+          {key: 'ans3', value: 'worst'}
+        ],
+        order: 4,
       })
     ];
 
     return of(questions.sort((a, b) => a.order - b.order));
   }
-  
+
 }

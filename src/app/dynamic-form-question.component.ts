@@ -26,6 +26,17 @@ import {QuestionBase} from './question-base';
           [value]="opt.key">{{opt.value}}</option>
       </select>
 
+      <div *ngSwitchCase="'radio'">
+        <fieldset *ngFor="let opt of question.options">
+          <input
+            type="radio"
+            [formControlName]="question.key"
+            [name]="question.key"
+            [value]="opt.key">
+          <label>{{opt.value}}</label><br>
+        </fieldset>
+      </div>
+
     </div>
 
     <div class="errorMessage" *ngIf="!isValid">{{question.label}} is required.</div>

@@ -1,7 +1,7 @@
-import { QuestionBase } from './question-base';
+import {QuestionBase} from './question-base';
 
-export class DropdownQuestion extends QuestionBase<string> {
-  controlType = 'dropdown';
+export class RadioQuestion extends QuestionBase<string> {
+  controlType = 'radio';
   options: {key: string, value: string}[] = [];
 
   constructor(options: {} = {}) {

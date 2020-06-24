@@ -28,8 +28,6 @@ export class QuestionBase<T> {
    * @param type The type of input this question is. Used in the type attribute
    *             of input tags to define the type of input this question repre-
    *             sents.
-   * @param options The set of answers represented as key/value pairs in an
-   *                array.
    */
   constructor(options: {
     value?: T,
