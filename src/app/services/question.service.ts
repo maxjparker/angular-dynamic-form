@@ -6,14 +6,32 @@ import {TextboxQuestion} from '../models/question-textbox';
 import {of} from 'rxjs';
 import {RadioQuestion} from '../models/question-radio';
 import {CheckboxQuestion} from '../models/question-checkbox';
+import questionnaire from '../../assets/questionnaire.json';
 
 @Injectable()
 export class QuestionService {
 
   // TODO: get from a remote source of question metadata
   getQuestions() {
-    let questions: QuestionBase<string>[] = [
+    let questions: QuestionBase<string>[] = [];
 
+    for (let key in questionnaire) {
+
+      switch(key) {
+        case 'dropdown':
+          questions.push(new DropdownQuestion(questionnaire[key]));
+          break;
+        case 'textbox':
+          questions.push(new TextboxQuestion(questionnaire[key]));
+          break;
+        case 'radio':
+          questions.push(new RadioQuestion(questionnaire[key]));
+          break;
+      }
+    }
+
+
+    /*
       new DropdownQuestion({
         key: 'brave',
         label: 'Bravery Rating',
@@ -64,6 +82,7 @@ export class QuestionService {
         order: 5
       })
     ];
+    */
 
     return of(questions.sort((a, b) => a.order - b.order));
   }
