@@ -7,7 +7,7 @@ import {QuestionBase} from './models/question-base';
   selector: 'app-question',
   template: `
   <div [formGroup]="form">
-    <label [attr.for]="question.key">{{question.label}}</label>
+    <label [attr.for]="question.key" class="col-form-label-lg">{{question.label}}</label>
 
     <div [ngSwitch]="question.controlType">
 
@@ -15,12 +15,14 @@ import {QuestionBase} from './models/question-base';
         *ngSwitchCase="'textbox'"
         [formControlName]="question.key"
         [id]="question.key"
-        [type]="question.type">
+        [type]="question.type"
+        class="form-control">
 
       <select
         [id]="question.key"
         *ngSwitchCase="'dropdown'"
-        [formControlName]="question.key">
+        [formControlName]="question.key"
+        class="form-control">
         <option
           *ngFor="let opt of question.options"
           [value]="opt.key">{{opt.value}}</option>
@@ -49,9 +51,9 @@ import {QuestionBase} from './models/question-base';
           <label>{{opt.value}}</label><br>
         </fieldset>
       </div>
-
     </div>
     <div class="errorMessage" *ngIf="!isValid">{{question.label}} is required.</div>
+    <br>
   </div>
   `
 })

@@ -9,7 +9,9 @@ import {Observable} from 'rxjs';
   template: `
   <div>
     <h2>Job Application for Heroes</h2>
-    <app-dynamic-form [questions]="questions$ | async"></app-dynamic-form>
+    <div class="container-fluid">
+      <app-dynamic-form [questions]="questions$ | async"></app-dynamic-form>
+    </div>
   </div>
   `,
   providers: [QuestionService]
