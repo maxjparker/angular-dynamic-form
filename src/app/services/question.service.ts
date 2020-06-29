@@ -14,8 +14,9 @@ export class QuestionService {
   // TODO: get from a remote source of question metadata
   getQuestions() {
     let questions: QuestionBase<string>[] = [];
-
+    console.log(questionnaire);
     for (let key in questionnaire) {
+      console.log(key);
 
       switch(key) {
         case 'dropdown':
@@ -26,6 +27,9 @@ export class QuestionService {
           break;
         case 'radio':
           questions.push(new RadioQuestion(questionnaire[key]));
+          break;
+        default:
+          console.log("error");
           break;
       }
     }

@@ -10,7 +10,7 @@ import {Observable} from 'rxjs';
   <div>
     <h2>Job Application for Heroes</h2>
     <div class="container-fluid">
-      <app-dynamic-form [questions]="questions$ | async"></app-dynamic-form>
+      <app-dynamic-form [questions]="questions$| async"></app-dynamic-form>
     </div>
   </div>
   `,

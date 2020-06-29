@@ -1,33 +1,38 @@
-/**
- * The most basic object model of a question in a form. This should be extended
- * to a specific question type such as a radio selection, checkbox, or textbox.
+/******************************************************************************
+ * The most basic object model of a question in a form.
  *
- * @param T The datatype of the answer to this question.
+ * @param <T> The datatype used to represent this question's answer.
  */
 export class QuestionBase<T> {
-  value: T;                                 // answer value of question
-  key: string;                              // identifying key of question
-  label: string;                            // the question displayed to user
-  required: boolean;                        // is question required by form?
-  order: number;                            // placement of question in form
-  controlType: string;                      // tells displaying component what kind of question this is
-  type: string;                             //
-  options: {key: string, value: string}[];  // suitable answers to this question
+  value: T;
+  key: string;
+  label: string;
+  required: boolean;
+  order: number;
+  controlType: string;
+  type: string;
+  options: {key: string, value: string}[];
 
-  /**
+  /****************************************************************************
    * Constructor for a basic question. Used by child classes only.
    *
-   * @param value The answer value of this question.
-   * @param key The identifying key to the value of this question.
-   * @param label The question as it is displayed to the user.
-   * @param required Is this question required by the form it belongs to?
-   * @param order The placement of this question in a form.
-   * @param controlType The type of question this is. Set in child classes and
-   *                    used by display components to determine which tags to
-   *                    generate and how to define them.
-   * @param type The type of input this question is. Used in the type attribute
-   *             of input tags to define the type of input this question repre-
-   *             sents.
+   * @param options A javascript object containing various parameters used to
+   *                configure a question.
+   * @param value The correct answer to the question , if applicable. Defaults
+   *              to undefined.
+   * @param key The name of the key for the key/value pair this question gener-
+   *            ates. Defaults to empty string.
+   * @param label The question being posed to the user. Defaults to empty
+   *              string.
+   * @param required Whether this question should set the overall form as in-
+   *                 valid if it is left unanswered/invalid. Defaults to empty
+   *                 string.
+   * @param order The placement of this question with respect to other quest-
+   *              ions. Defaults to 1.
+   * @param controlType The html question format, be it textbox or drop-down
+   *                    list, etc. Defaults to empty string.
+   * @param type The value for an html input tag's type attribute. Defaults to
+   *             empty string.
    */
   constructor(options: {
     value?: T,
